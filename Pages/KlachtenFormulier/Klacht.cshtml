@@ -1,0 +1,57 @@
+﻿@page
+@model eigen_website_1._0.Pages.KlachtenFormulier.KlachtModel
+@{
+}
+<div class="container mt-4">
+    <h2>Klachtenformulier</h2>
+    <p>Vul hieronder je klacht in. Je bericht wordt opgeslagen en later behandeld door het student housing team.</p>
+
+    <form method="post">
+
+        <!-- NAAM -->
+        <div class="mb-3">
+            <label class="form-label">Naam</label>
+            <input type="text" class="form-control" name="Naam" placeholder="Voor- en achternaam" required />
+        </div>
+
+        <!-- GEBOUW -->
+        <div class="mb-3">
+            <label class="form-label">Gebouw</label>
+            <select class="form-select" name="Gebouw" required>
+                <option value="">-- Kies je gebouw --</option>
+                <option>Gebouw Boschdijk</option>
+                <option>Gebouw Aalsterweg</option>
+                <option>Gebouw Kruistraat</option>
+                <option>Gebouw Kersenweg</option>
+            </select>
+        </div>
+
+        <!-- KAMERNUMMER -->
+        <div class="mb-3">
+            <label class="form-label">Kamernummer</label>
+            <input type="text" class="form-control" name="Kamer" placeholder="Bijv. 1.12" required />
+        </div>
+
+        <!-- SUBJECT / ONDERWERP -->
+        <div class="mb-3">
+            <label class="form-label">Onderwerp</label>
+            <input type="text" class="form-control" name="Onderwerp" placeholder="Waar gaat de klacht over?" required />
+        </div>
+
+        <!-- GROTE TEKSTBOX (EMAIL BODY) -->
+        <div class="mb-3">
+            <label class="form-label">Omschrijving van de klacht</label>
+            <textarea class="form-control"
+                      name="Beschrijving"
+                      rows="6"
+                      placeholder="Schrijf hier je klacht of toelichting..."
+                      required></textarea>
+        </div>
+
+        <!-- VERZEND BUTTON -->
+        <button type="submit" class="btn btn-primary w-100">
+            Klacht verzenden
+        </button>
+
+    </form>
+</div>

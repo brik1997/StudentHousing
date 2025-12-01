@@ -1,0 +1,34 @@
+﻿@page
+@model eigen_website_1._0.Pages.QuotesList.QuotesModel
+@{
+}
+@{
+    ViewData["Title"] = "Nieuwe quote";
+}
+
+<div class="container mt-4">
+    <h2>Nieuwe quote insturen</h2>
+    <p>Vul hieronder je quote in. Hij mag ongeveer 150–200 woorden lang zijn.</p>
+
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Je naam (optioneel)</label>
+            <input type="text" class="form-control" name="Naam" placeholder="Hoe wil je getoond worden?" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quote</label>
+            <textarea class="form-control"
+                      name="Tekst"
+                      rows="4"
+                      maxlength="800"
+                      placeholder="Typ hier je quote..."
+                      required></textarea>
+            <div class="form-text">
+                Max ongeveer 150–200 woorden (ongeveer 800 tekens).
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Quote insturen
+        </button>
+    </form>
+</div>

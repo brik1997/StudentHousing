@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eigen_website_1._0</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/eigen_website_1._0.styles.css" asp-append-version="true" />
+    <style>
+    .header-logo {
+        height: 120px;
+        width: auto;
+        border-radius: 4px;
+        }
+
+    .navbar-brand {
+            background-color: #80C9E4 !important;
+    }
+    .navbar .container {
+            background-color: #80C9E4 !important;
+    }
+    .dashboard {
+        color: white;
+    }
+    .footer {
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    }
+
+.footer a.footer-link {
+    text-decoration: none;
+    color: inherit;
+    }
+
+.footer a.footer-link:hover {
+    text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container d-flex align-items-center">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/img/logo1.0.webp" alt="Logo" class="me-2 header-logo" />
+                </a>
+                <!-- mobiel menu knop-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- nav links-->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Overons/Index1.0">Over ons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact/Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Login/Log-in1">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer border-top text-muted">
+        <div class="container text-center py-3">
+            © 2025 Student Housing ·
+            <a asp-area="" asp-page="/Contact/Index" class="footer-link">Contact</a> ·
+            <a asp-area="" asp-page="/Privacy/Privacy" class="footer-link">Privacy</a>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
