@@ -23,10 +23,10 @@ namespace eigen_website_1._0.Pages.KlachtenFormulier
         {
         }
 
-        // 2️⃣ Wordt uitgevoerd zodra je formulier op POST klikt
+        
         public IActionResult OnPost()
         {
-            string connectionString = "server=localhost;database=StudentHousing;user=root;password=Datagedoe:1;";
+            string connectionString = "server=localhost;database=StudentHousing;user=root;password=Groep14;";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {

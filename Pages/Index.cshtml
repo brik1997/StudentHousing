@@ -82,15 +82,13 @@
     <a href="/QuotesList/Quotes" class="column">
         <h2>Quotes</h2>
         <ul>
-            <li>Afwas is een vorm van meditaite, daarom doe ik het nooit</li>
-            <li>We hebben geen rotzooi, we hebben sfeer</li>
-            <li>Wifi valt vaker uit dan ik op college kom</li>
-            <li>Alcohol lost geen problem op maar melk ook niet</li>
-            <li>Als het stinkt is het waarschijnlijk doner kebab</li>
-            <li>Schoonmaken is iets voor de volgende generatie</li>
-            <li>Niks is permanent, behalve onze gezamelijke schuld bij de supermarkt</li>
+            @foreach (var q in Model.QuotesLijst)
+            {
+                <li>"@q.Tekst" — <i>@q.Auteur</i></li>
+            }
         </ul>
     </a>
+
 
     <a href="/KlachtenFormulier/Klacht" class="column">
         <h2>Klachten</h2>

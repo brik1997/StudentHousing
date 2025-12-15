@@ -17,7 +17,7 @@ namespace eigen_website_1._0.Pages.Log_in
 
         public IActionResult OnPost()
         {
-            string connStr = "server=localhost;database=studenthousing;user=root;password=Datagedoe:1;";
+            string connStr = "server=localhost;database=studenthousing;user=root;password=Groep14;";
 
             using (var conn = new MySqlConnection(connStr))
             {
