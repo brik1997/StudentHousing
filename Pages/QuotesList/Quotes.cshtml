@@ -6,29 +6,18 @@
     ViewData["Title"] = "Nieuwe quote";
 }
 
-<div class="container mt-4">
-    <h2>Nieuwe quote insturen</h2>
-    <p>Vul hieronder je quote in. Hij mag ongeveer 150–200 woorden lang zijn.</p>
+<h2>Nieuwe quote toevoegen</h2>
 
     <form method="post">
         <div class="mb-3">
-            <label class="form-label">Je naam (optioneel)</label>
-            <input type="text" class="form-control" name="Naam" placeholder="Hoe wil je getoond worden?" />
+        <label class="form-label">Quote</label>
+        <textarea class="form-control" name="Tekst" required rows="3"></textarea>
         </div>
+
         <div class="mb-3">
-            <label class="form-label">Quote</label>
-            <textarea class="form-control"
-                      name="Tekst"
-                      rows="4"
-                      maxlength="800"
-                      placeholder="Typ hier je quote..."
-                      required></textarea>
-            <div class="form-text">
-                Max ongeveer 150–200 woorden (ongeveer 800 tekens).
-            </div>
+        <label class="form-label">Auteur (optioneel)</label>
+        <input type="text" class="form-control" name="Auteur" />
         </div>
-        <button type="submit" class="btn btn-primary">
-            Quote insturen
-        </button>
+
+    <button type="submit" class="btn btn-primary w-100">Opslaan</button>
     </form>
-</div>
