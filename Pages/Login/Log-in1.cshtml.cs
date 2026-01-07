@@ -20,7 +20,7 @@ namespace eigen_website_1._0.Pages.Log_in
             string connStr = "server=localhost;database=studenthousing;user=root;password=Groep14;";
 
             using (var conn = new MySqlConnection(connStr))
-            {
+            {   
                 conn.Open();
 
                 string sql = "SELECT * FROM users WHERE Email = @email AND PasswordHash = @pass";
