@@ -4,82 +4,162 @@
     ViewData["Title"] = "Dashboard Boschdijk 114";
 }
 <style>
-    .row {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 20px;
+    /* algemene grid: altijd 3 op een rij */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .column {
-        flex: 1;
-        background-color: aliceblue;
-        padding: 30px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
+    /* floating container (hangt over de foto) */
+    .dashboard-floating {
+        position: relative;
+        margin-top: -210px; /* DIT bepaalt hoe ver hij over de foto hangt */
+        z-index: 5;
     }
-    li {
-        white-space: pre;
+
+    /* normale container onder de foto */
+    .dashboard-normal {
+        margin-top: 40px;
     }
-    .column-link {
+
+    /* basis kaart */
+    .dashboard-card {
+        background: white;
+        padding: 18px 20px;
         text-decoration: none;
-        color: inherit;
+        color: #111;
         display: block;
     }
-    .column-link{
-        transition: 0.2s;
-        cursor: pointer;
+
+    /* bovenste rij: GEEN rand */
+    .no-border .dashboard-card {
+        border: none;
     }
-    .column-link .column:hover{
-        background:#f0f0f0;
-        transform: translateX(-3px);
+
+    /* onderste rij: WEL rand */
+    .with-border .dashboard-card {
+        border: 1px solid #000;
     }
+
+    /* titel */
+    .dashboard-card h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    /* lijst */
+    .dashboard-card ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+    /* hover subtiel */
+    .dashboard-card:hover {
+        background: #f6f6f6;
+    }
+
+</style>
+<style>
+    /* Pagina-wijde slideshow */
+    .homepage-carousel img {
+        height: 70vh; /* hoogte van de slideshow */
+        min-height: 520px;
+        max-height: 820px;
+        object-fit: cover; /* netjes croppen */
+    }
+    /* carousel moet referentiepunt zijn */
+    #homepageCarousel {
+        position: relative;
+    }
+
+    /* zwevende titel */
+    .hero-title {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: white;
+        font-weight: 800;
+        font-size: 2.4rem;
+        z-index: 10; /* altijd boven de foto's */
+        text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+
 </style>
 
-<h1>Dashboard Boschdijk 114</h1>
+<div id="homepageCarousel"
+     class="carousel slide homepage-carousel"
+     data-bs-ride="carousel"
+     data-bs-interval="4500"
+     data-bs-pause="false">
 
 
+  
 
-<div class="row">
-    <a href="/Afvalwijzer/Afval" class="column">
-        <h2>Afval Wijzer</h2>
-        <ul>
-            <li>December:</li>
-            <li>16--Karton</li>
-            <li>19--Restafval</li>
-            <li>20--GFT</li>
-            <li>Januari:</li>
-            <li>2--Restafval</li>
-            <li>3--GFT</li>
-            <li>17--Karton</li>
-        </ul>
-    </a>
+    <!-- Slides -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/img/slide/slide1.jpg" class="d-block w-100" alt="Slide 1">
+        </div>
 
-    <a href="/AanvullendeDiensten/Diensten" class="column">
-        <h2>Aanvullende diensten</h2>
-        <ul>
-            <li>Klusjes man</li>
-            <li>grote beurt ketel</li>
-            <li>brabant water</li>
-            <li>gas water licht</li>
-            <li>verhuis service</li>
-            <li>ontstoppings dienst</li>
-        </ul>
-    </a>
+        <div class="carousel-item">
+            <img src="~/img/slide/slide2.jpg" class="d-block w-100" alt="Slide 2">
+        </div>
 
-    <a href="/OverzichtKosten/Kosten" class="column">
-        <h2>Kosten</h2>
-        <ul>
-            <li>650--Kale huur</li>
-            <li>75--Gas water licht </li>
-            <li>35--brabant water</li>
-            <li>25--VVE</li>
-            <li>785--Totaal</li>
-        </ul>
-    </a>
+        <div class="carousel-item">
+            <img src="~/img/slide/slide3.jpg" class="d-block w-100" alt="Slide 3">
+        </div>
+    </div>
+    
+    <h1 class="hero-title">Dashboard Boschdijk 114</h1>
+
+   
 </div>
 
-<div class="row">   
-    <a href="/QuotesList/Quotes" class="column">
+
+<div class="dashboard-floating">
+    <div class="dashboard-grid no-border">
+        <a href="/Afvalwijzer/Afval" class="dashboard-card">
+            <h2>Afval Wijzer</h2>
+            <ul>
+                <li>December:</li>
+                <li>16--Karton</li>
+                <li>19--Restafval</li>
+                <li>20--GFT</li>
+                <li>Januari:</li>
+            </ul>
+        </a>
+
+        <a href="/AanvullendeDiensten/Diensten" class="dashboard-card">
+            <h2>Aanvullende diensten</h2>
+            <ul>
+                <li>Klusjes man</li>
+                <li>grote beurt ketel</li>
+                <li>brabant water</li>
+                <li>gas water licht</li>
+                <li>verhuis service</li>
+            </ul>
+        </a>
+
+        <a href="/OverzichtKosten/Kosten" class="dashboard-card">
+            <h2>Kosten</h2>
+            <ul>
+                <li>650--Kale huur</li>
+                <li>75--Gas water licht </li>
+                <li>35--brabant water</li>
+                <li>25--VVE</li>
+                <li>785--Totaal</li>
+            </ul>
+        </a>
+    </div>            
+</div>
+
+<div class="dashboard-normal">   
+    <div class="dashboard-grid with-border">
+        <a href="/QuotesList/Quotes" class="dashboard-card">
         <h2>Quotes</h2>
         <ul>
             @foreach (var q in Model.QuotesLijst)
@@ -87,45 +167,48 @@
                 <li>"@q.Tekst" — <i>@q.Auteur</i></li>
             }
         </ul>
-    </a>
+        </a>
 
 
-    <a href="/KlachtenFormulier/Klacht" class="column">
-        <h2>Klachten</h2>
-        <ul>
-            <li>Afval</li>
-            <li>Geluidsoverlast</li>
-            <li>Warm water</li>
-            <li>Doner kebab stank</li>
-            <li>Bier niet aanvullen</li>
-            <li>wc rol vervangen</li>
-        </ul>
-    </a>
+        <a href="/KlachtenFormulier/Klacht" class="dashboard-card">
+            <h2>Klachten</h2>
+            <ul>
+                <li>Afval</li>
+                <li>Geluidsoverlast</li>
+                <li>Warm water</li>
+                <li>Doner kebab stank</li>
+                <li>Bier niet aanvullen</li>
+                <li>wc rol vervangen</li>
+            </ul>
+        </a>
 
-    <a href="/Aankondigingen1/Aankondegingen" class="column">
-        <h2>Aankondegingen</h2>
-        <ul>
-            <li>Nieuwjaars feest 31 dec</li>
-            <li>Dry January (alleen op inschrijving)</li>
-            <li>Groote schoon maak 12 Januari</li>
-            <li>Rol container bier halen 12 Januari</li>
-            <li>Indrinken voor Carnaval 28 Januari</li>
-        </ul>
-    </a>
+        <a href="/Aankondigingen1/Aankondegingen" class="dashboard-card">
+            <h2>Aankondegingen</h2>
+            <ul>
+                <li>Nieuwjaars feest 31 dec</li>
+                <li>Dry January (alleen op inschrijving)</li>
+                <li>Groote schoon maak 12 Januari</li>
+                <li>Rol container bier halen 12 Januari</li>
+                <li>Indrinken voor Carnaval 28 Januari</li>
+            </ul>
+        </a>
+    </div>
 </div>
-<div class="row">
-    <a href="/Takenlijst1/Takenlijst" class="column">
-        <h2>Takenlijst geheel huis</h2>
-        <ul>
-            <li>hier word de takenlijst van het gehele huis gedeeld.</li>
+<div class="dashboard-normal">
+    <div class="dashboard-grid with-border">
+        <a href="/Takenlijst1/Takenlijst" class="dashboard-card">
+            <h2>Takenlijst geheel huis</h2>
+            <ul>
+                <li>hier word de takenlijst van het gehele huis gedeeld.</li>
     
-        </ul>
-    </a>
+            </ul>
+        </a>
 
-    <a href="/KlachtenFormulier/Klacht" class="column">
-        <h2>Taakverdeling</h2>
-        <ul>
-            <li> dit worden jou taken</li>
-        </ul>
-    </a>
+        <a href="/KlachtenFormulier/Klacht" class="dashboard-card">
+            <h2>Taakverdeling</h2>
+            <ul>
+                <li> dit worden jou taken</li>
+            </ul>
+        </a>
+    </div>
 </div>
