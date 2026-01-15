@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MySql.Data.MySqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace eigen_website_1._0.Pages.Log_in
 {
@@ -19,13 +19,13 @@ namespace eigen_website_1._0.Pages.Log_in
         {
             string connStr = "server=localhost;database=studenthousing;user=root;password=Groep14;";
 
-            using (var conn = new MySqlConnection(connStr))
+            using (var conn = new SqlConnection(connStr))
             {   
                 conn.Open();
 
                 string sql = "SELECT * FROM users WHERE Email = @email AND PasswordHash = @pass";
 
-                var cmd = new MySqlCommand(sql, conn);
+                var cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@email", Email);
                 cmd.Parameters.AddWithValue("@pass", Password);
 
@@ -33,19 +33,19 @@ namespace eigen_website_1._0.Pages.Log_in
                 {
                     if (reader.Read())
                     {
-                        // SESSIONS
-                        HttpContext.Session.SetInt32("UserId", reader.GetInt32("Id"));
-                        HttpContext.Session.SetString("Role", reader.GetString("Role"));
-                        HttpContext.Session.SetString("Email", reader.GetString("Email"));
+                        ////// SESSIONS
+                        ////HttpContext.Session.SetInt32("UserId", reader.GetInt32("Id"));
+                        ////HttpContext.Session.SetString("Role", reader.GetString("Role"));
+                        ////HttpContext.Session.SetString("Email", reader.GetString("Email"));
 
-                        // Redirect op basis van rol
-                        string role = reader.GetString("Role");
+                        //// Redirect op basis van rol
+                        ////string role = reader.GetString("Role");
 
-                        if (role == "Admin")
-                            return RedirectToPage("/AdminDashboard/Index");
+                        //if (role == "Admin")
+                        //    return RedirectToPage("/AdminDashboard/Index");
 
-                        if (role == "Student")
-                            return RedirectToPage("/Dashboard/Index");
+                        //if (role == "Student")
+                        //    return RedirectToPage("/Dashboard/Index");
                     }
                     else
                     {

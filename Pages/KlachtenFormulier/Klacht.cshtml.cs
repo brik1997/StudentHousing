@@ -29,7 +29,7 @@ namespace eigen_website_1._0.Pages.KlachtenFormulier
         {
             string connectionString = "server=localhost;database=StudentHousing;user=root;password=Groep14;";
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
@@ -38,7 +38,7 @@ namespace eigen_website_1._0.Pages.KlachtenFormulier
                 VALUES (@Naam, @Gebouw, @Kamer, @Onderwerp, @Omschrijving)";
 
 
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Naam", Formulier.Naam);
                 cmd.Parameters.AddWithValue("@Gebouw", Formulier.Gebouw);
                 cmd.Parameters.AddWithValue("@Kamer", Formulier.Kamer);
