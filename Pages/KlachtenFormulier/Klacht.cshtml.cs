@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MySql.Data.MySqlClient;
+using Microsoft.Data.SqlClient;
+
 
 namespace eigen_website_1._0.Pages.KlachtenFormulier
 {

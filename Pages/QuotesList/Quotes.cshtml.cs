@@ -1,16 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MySql.Data.MySqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace eigen_website_1._0.Pages.QuotesList
 {
     public class QuotesModel : PageModel
     {
-        [BindProperty]
-        public string Tekst { get; set; }
+        private readonly IConfiguration _config;
+
+        public QuotesModel(IConfiguration config)
+        {
+            _config = config;
+        }
 
         [BindProperty]
-        public string Auteur { get; set; }
+        public string Tekst { get; set; } = "";
+
+        [BindProperty]
+        public string Auteur { get; set; } = "";
 
         public void OnGet()
         {
@@ -18,17 +25,29 @@ namespace eigen_website_1._0.Pages.QuotesList
 
         public IActionResult OnPost()
         {
-            string connStr = "server=localhost;database=studenthousing;user=root;password=Groep14;";
+            if (string.IsNullOrWhiteSpace(Tekst))
+            {
+                ModelState.AddModelError("", "Quote tekst is verplicht.");
+                return Page();
+            }
 
-            using var conn = new MySqlConnection(connStr);
+            string? connStr = _config.GetConnectionString("StudentHousingDb");
+            if (string.IsNullOrWhiteSpace(connStr))
+            {
+                ModelState.AddModelError("", "Database connectie ontbreekt.");
+                return Page();
+            }
+
+            using var conn = new SqlConnection(connStr);
             conn.Open();
 
-            string sql = @"INSERT INTO quotes (tekst, auteur)
-                           VALUES (@tekst, @auteur);";
+            // Optie A: we misbruiken 'datum' als quote-tekst
+            string sql = @"INSERT INTO dbo.quotes (auteur, datum)
+                           VALUES (@auteur, @datum);";
 
-            using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@tekst", Tekst);
-            cmd.Parameters.AddWithValue("@auteur", Auteur);
+            using var cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@auteur", string.IsNullOrWhiteSpace(Auteur) ? "" : Auteur);
+            cmd.Parameters.AddWithValue("@datum", Tekst);
 
             cmd.ExecuteNonQuery();
 
